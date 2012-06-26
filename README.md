@@ -1,4 +1,4 @@
 mess
 ====
 
-random script that is sometimes helpful
+random scripts.
