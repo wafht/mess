@@ -8,7 +8,7 @@ usage() {
 if [ "$#" -ne "2" ]; then
 	usage
 fi
-svn_repository='/home/wafht/dev/nuomi';
+
 dist_branch='prod'
 cd "$svn_repository" && svn up; cd "$svn_repository/branches/$dist_branch"
 if [ $? ]; then
