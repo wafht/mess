@@ -1,6 +1,6 @@
 #!/bin/bash
 usage() {
-	echo "Usage: svn_merge  -c version";
+	echo "Usage: svn_merge  -c comma seperated versions";
 	echo "Usage: svn_merge  -r fromVersion(excluded):toVersion(included)";
 	exit 1
 }
@@ -14,7 +14,7 @@ cd "$svn_repository" && svn up; cd "$svn_repository/branches/$dist_branch"
 if [ $? ]; then
 	case $1 in
 		-c)
-		  svn merge ../../trunk/ -c $2;; 
+		  svn merge ../../trunk/ -c `echo $2| sed 's/,/ -c /g'`;; 
 		-r)
 		  svn merge ../../trunk/ -r $2;;
 		*) 
