@@ -1,0 +1,1 @@
+mysql -h10.3.25.157 -uroot -pnothing --default-character-set=utf8 niux_test

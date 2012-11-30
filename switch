@@ -1,0 +1,3 @@
+#!/bin/sh
+f=`basename $0`
+cd ~/dev/nginx_conf; rm -rf *; touch $f; notify-send "$f"
