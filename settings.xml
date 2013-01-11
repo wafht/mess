@@ -1,0 +1,83 @@
+<!--
+校内Maven资源库公用配置文件
+维护：lei.chen@opi-corp.com
+最后更新：2010-12-23
+-->
+<settings>
+  <mirrors>
+    <mirror>
+      <!--This is used to direct the public snapshots repo in the
+          profile below over to a different nexus group -->
+      <id>nexus-public-snapshots</id>
+      <mirrorOf>public-snapshots</mirrorOf>
+      <url>http://repos.d.xiaonei.com/nexus/content/groups/public-snapshots</url>
+    </mirror>
+    <mirror>
+      <!--This sends everything else to /public -->
+      <id>nexus</id>
+      <mirrorOf>*</mirrorOf>
+      <url>http://repos.d.xiaonei.com/nexus/content/groups/public</url>
+    </mirror>
+  </mirrors>
+  <profiles>
+    <profile>
+      <id>development</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+     <pluginRepositories>
+        <pluginRepository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+    <profile>
+      <!--this profile will allow snapshots to be searched when activated-->
+      <id>public-snapshots</id>
+      <repositories>
+        <repository>
+          <id>public-snapshots</id>
+          <url>http://public-snapshots</url>
+          <releases><enabled>false</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+     <pluginRepositories>
+        <pluginRepository>
+          <id>public-snapshots</id>
+          <url>http://public-snapshots</url>
+          <releases><enabled>false</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+      </pluginRepositories>
+    </profile>
+  </profiles>
+  <activeProfiles>
+    <activeProfile>development</activeProfile>
+  </activeProfiles>
+
+<localRepository>/home/wafht/.m2/repository</localRepository>
+
+  <!-- 发布的服务器和密码，暂时未限制权限，请不要提交不稳定版本 -->
+   <servers>
+    <server>
+      <id>archiva.internal</id>
+      <username>maven</username>
+      <password>1q2w3e4r</password>
+    </server>
+    <server>
+      <id>archiva.snapshots</id>
+      <username>maven</username>
+      <password>1q2w3e4r</password>
+    </server>
+  </servers>
+
+</settings>
